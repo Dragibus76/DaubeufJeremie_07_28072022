@@ -38,29 +38,7 @@ export const InputMainListener = () => {
                     }
                 }
 
-                // // chercher dans les ustencils
-                // for (let j = 0; j < recipe.ustensils.length; j++) {
-                //     const ustensil = recipe.ustensils[j]
-
-                //     if (ustensil.toLowerCase().includes(mainInputValue)) {
-                //         recipe.display = true
-                //         cardMessage.style.display = "none"
-                //         break
-                //     } else {
-                //         recipe.display = false
-                //     }
-                // }
-
-                // // chercher dans les appareils
-                // const appliance = recipe.appliance
-                // if (appliance.toLowerCase().includes(mainInputValue)) {
-                //     recipe.display = true
-                //     cardMessage.style.display = "none"
-                // } else {
-                //     recipe.display = false
-                // }
-
-                // chercher dans les descriptions
+              
                 const titre = recipe.name
                 const description = recipe.description
 

@@ -2,9 +2,9 @@ import { createCardsForDom } from "../components/view/card.js"
 import { createDropdown } from "../components/view/dropdown.js"
 import { refresh } from "../components/refreshRecipe.js"
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 //                          FONCTIONS UTILES DU PROJET
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 // Créer un DOM Element
 export const createDomElement = (className, DomElem) => {
@@ -13,7 +13,7 @@ export const createDomElement = (className, DomElem) => {
     return elm
 }   
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 // Fonction qui permet d'ouvrir une fenêtre
 export const displayRecipes = (data) => {
@@ -28,7 +28,7 @@ export const displayRecipes = (data) => {
     });
 }
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 // Fonction qui permet d'ouvrir une fenêtre
 export const displayDropdown = () => {
@@ -41,19 +41,19 @@ export const displayDropdown = () => {
 
 }
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 export const removeDuplicateItemInArray = (array) => array.filter((item, pos) => {
     return array.indexOf(item) == pos;
 })
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 export const removeDuplicateItemInArrayUstensils = (array) => array.filter((item, pos) => {
     return array.indexOf(item.toLowerCase()) == pos;
 })
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 export const displayContentsDropdown = (optionContainer, input, arrow, dropdown, pixel) => {
 
@@ -77,7 +77,7 @@ export const displayContentsDropdown = (optionContainer, input, arrow, dropdown,
     }
 }
 
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 export let displayIngrediantDataIfTrue = (data, tab) => {
     data.forEach(recipe => {
@@ -89,25 +89,7 @@ export let displayIngrediantDataIfTrue = (data, tab) => {
     })
 }
 
-export let displayUstansilDataIfTrue = (data, tab) => {
-    data.forEach(recipe => {
-        if (recipe.display == true) {
-            recipe.ustensils.forEach(el => {
-                tab.push(el)
-            });
-        }
-    })
-}
-
-export let displayAppareilDataIfTrue = (data, tab) => {
-    data.forEach(recipe => {
-        if (recipe.display == true) {
-            tab.push(recipe.appliance)
-        }
-    })
-}
-
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+/***********************************************************************************************/
 
 export const deleteTag = () => {
     const tags = document.querySelectorAll('.tag')

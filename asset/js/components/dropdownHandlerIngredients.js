@@ -16,7 +16,7 @@ export const dropDownIngredientsListener = () => {
     const zoneTag = document.querySelector(".zoneTag")
 
     // ===================
-    //      AU CLICK
+    //      EVENT AU CLICK
     // ===================
     dropdownContainer.addEventListener('click', () => {
         const ingred = []
@@ -38,7 +38,7 @@ export const dropDownIngredientsListener = () => {
     })
 
     // ===================
-    //      A L'INPUT
+    //       EVENT A L'INPUT
     // ===================
     input.addEventListener('input', () => {
         // Si il y a plus de 2 caractères
@@ -85,7 +85,7 @@ export const dropDownIngredientsListener = () => {
     })
 
     // quand on click sur un <li> ça crée un tag
-    listElmt.addEventListener("click", (e) => {
+    mistElmt.addEventListener("click", (e) => {
         const selectedTag = e.target.innerHTML
         const tag = createTag(e.target.innerHTML, "Ingredients")
         zoneTag.innerHTML += tag
