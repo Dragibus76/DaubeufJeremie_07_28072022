@@ -89,6 +89,23 @@ export let displayIngrediantDataIfTrue = (data, tab) => {
     })
 }
 
+export let displayUstansilDataIfTrue = (data, tab) => {
+    data.forEach(recipe => {
+        if (recipe.display == true) {
+            recipe.ustensils.forEach(el => {
+                tab.push(el)
+            });
+        }
+    })
+}
+
+export let displayAppareilDataIfTrue = (data, tab) => {
+    data.forEach(recipe => {
+        if (recipe.display == true) {
+            tab.push(recipe.appliance)
+        }
+    })
+}
 /***********************************************************************************************/
 
 export const deleteTag = () => {

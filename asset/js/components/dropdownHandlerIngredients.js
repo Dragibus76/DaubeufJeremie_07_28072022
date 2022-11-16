@@ -85,7 +85,7 @@ export const dropDownIngredientsListener = () => {
     })
 
     // quand on click sur un <li> ça crée un tag
-    mistElmt.addEventListener("click", (e) => {
+    listElmt.addEventListener("click", (e) => {
         const selectedTag = e.target.innerHTML
         const tag = createTag(e.target.innerHTML, "Ingredients")
         zoneTag.innerHTML += tag
