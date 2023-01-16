@@ -113,16 +113,16 @@ input:focus {
     border-radius: var(--border-radius);
     padding: 20px;
     margin-right: 20px;
-    transition: all .2s ease-in-out;
+    
 }
 
 .field i,
 .field input::placeholder {
     color: white;
 }
-.field:hover input::placeholder {
+/* .field:hover input::placeholder {
     opacity: 50%;
-}
+} */
 
 .input-and-chevron-down {
     display: flex;
@@ -145,7 +145,7 @@ input:focus {
 }
 
 .field i {
-    transition: all .1s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .field:hover i {

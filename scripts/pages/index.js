@@ -40,36 +40,59 @@ allInput.forEach(input => {
     });
 });
 
+//SEARCHBAR
 //take value of the search bar while type Enter
-searchBarRecipe.addEventListener('keyup', (e) => {
-    if (e.key != "Enter" || e.target.value.length < 3) return
-    displayResultFromSearchBar(e.target.value);
+searchBarRecipe.addEventListener("input", (e) =>
+{
+    const needle = e.target.value.toLowerCase();
+    if (needle.length < 3)
+    {
+        showErrorNotice()
+        return;
+    }
+    
+    // updateResultAfterResearch(needle);
+    const filtered = search(needle);
+    displayRecipes(filtered);
+    updateFilters(filtered);
 });
 
-searchBarRecipe.addEventListener('keyup', (e) => {
-    if (e.key != "Enter" || e.target.value.length > 2) return
-    e.target.value = "";
-    displayResultFromSearchBar(e.target.value);
-});
+function showErrorNotice()
+{
+    yourResultWord.style.color = "red";
+    yourResultWord.append(
+        `Votre résultat doit faire au moins 3 lettres pour rechercher !`
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// searchBarRecipe.addEventListener('keyup', (e) => {
+//     if (e.key != "Enter" || e.target.value.length < 3) return
+//     displayResultFromSearchBar(e.target.value);
+// });
+
+// searchBarRecipe.addEventListener('keyup', (e) => {
+//     if (e.key != "Enter" || e.target.value.length > 2) return
+//     e.target.value = "";
+//     displayResultFromSearchBar(e.target.value);
+// });
+
 
 //We can also click in the icon search bar
 researchIcon.addEventListener('click', () => {
     if (searchBarRecipe.value.length < 3) return
     displayResultFromSearchBar(searchBarRecipe.value);
 });
-
-//Display your result after a event, with parameters the element Html Value
-function displayResultFromSearchBar(elementHtmlValue) {
-    yourResultWord.innerHTML = "";
-    if (elementHtmlValue) {
-        yourResultWord.style.color = "grey";
-        yourResultWord.append(`Voici le résultat de votre recherche : "${elementHtmlValue}" `)
-    } else {
-        yourResultWord.style.color = "red";
-        yourResultWord.append(`Votre résultat doit faire au moins 3 lettres pour rechercher !`)
-    }
-    updateResultAfterResearch(resultRecipes);
-}
 
 ingredientInput.addEventListener('keyup', (e) => {
     filterInputFieldByType(ingredientInput, ingredientList, ingredientsArray, e)
@@ -148,7 +171,7 @@ function displayRecipes(recipes) {
     const listRecipesSection = document.getElementById('list-recette-section');
     listRecipesSection.innerHTML = "";
     if (recipes.length === 0) {
-        listRecipesSection.innerText = "Vos Recherches ont rien données, essayez de chercher un ingrédient valide !";
+        listRecipesSection.innerText = "Aucune recette ne correspond à votre critère… vous pouvez chercher ' tarte aux pommes ', ' poisson ', etc.";
     }
 
     //Display card in the result
@@ -327,8 +350,58 @@ function clickOnCrossForCloseTag(elementHtml, nameTag) {
         }
     })
 }
+//2 versions
+//1st version
+const needle = searchBarRecipe.value.toLowerCase();
 
-function updateResultAfterResearch(resultRecipes) {
+function func1(recipes, needle)
+{
+    return recipes.filter((recipe) => {
+        let resultRecipesByName = recipe.name.toLowerCase().includes(needle);
+        let resultRecipesByDescription = recipe.description.toLowerCase().includes(needle);
+        let resultRecipesByIngredient = recipe.ingredient.find((ing) => ing.ingredient.toLowerCase().includes(needle));
+
+        return (resultRecipesByName || resultRecipesByDescription || resultRecipesByIngredient )
+    })
+}
+
+//2nd version
+// function func2(recipes, needle)
+// {
+//     const list = [];
+
+//     for (let i =0; i < recipes.length; i++)
+//     {
+//         const recipe = recipes[i];
+//         if (recipe.name.toLowerCase().includes(needle))
+//         {
+//             list.push(recipe);
+//             continue;
+//         }
+//         if (recipe.description.toLowerCase().includes(needle))
+//         {
+//             list.push(recipe);
+//             continue;
+//         }
+
+//         let resultRecipesByIngredient = false;
+        
+//         for (let j=0; j < recipe.ingredients.length; j++)
+//         {
+//             const ing = recipe.ingredients[j].ingredient.toLowerCase();
+//             if (ing.includes(needle))
+//             {
+//                 resultRecipesByIngredient = true;
+//             }
+//         }
+//         if (resultRecipesByName || resultRecipesByDescription || resultRecipesByIngredient)
+//         {
+//             list.push(recipe)
+//         }
+//     }
+// }
+
+function updateResultAfterResearch(needle) {
     //1- Filter resultRecipes by the value of the searchBar
     resultRecipes = recipes.filter(recipe => { //Récupère chaque Recipe avec filter, ceci est une boucle
         let resultRecipesByName = recipe.name.toLowerCase().includes(searchBarRecipe.value.toLowerCase()); //vérifie si le recipe name concorde avec la value du input, si oui return la valeur dans resultRecipes
@@ -339,16 +412,6 @@ function updateResultAfterResearch(resultRecipes) {
         }
         return false;//Sinon return false.
     });
-
-    //2- TAGS CHECK
-    if (applianceTagsArray.length > 0) {
-
-        resultRecipes = resultRecipes.filter(recipe => {
-            const resultApplianceTag = applianceTagsArray.filter(apptag => recipe.appliance.toLowerCase().includes(apptag))
-            return resultApplianceTag.length
-        });
-
-    }
 
     if (ingredientTagsArray.length > 0) {
 
