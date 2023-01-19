@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Les petits plats</title>
+        <meta name="description" content="Les petits plats , site de recette de cuisine"/>
+        <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+            crossorigin="anonymous"/>
+        <link rel="shortcut icon" href="favicon2.ico" type="images/x-icon"/>
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <a href="index.html">
+                    <img id="logo" src="logo.png" alt="Les Petits Plats, logo"/>
+                </a>
+            </header>
+
+            <!--ZONE DE RECHERCHE PRINCIPALE-->
+            <div class="search">
+                <div class="search-every">
+                    <input class="search-all" id="search-all" type="search" placeholder="Rechercher un ingrédient, appareil, unstensile ou une recette" autocomplete="off"/>
+                    <i class="fas fa-search"></i>
+                </div>
+
+                <!--ZONE DE RECHERCHE PAR TAG-->
+                <!--affichage des tags sélectionnés-->
+                <div class="tags">
+                    <div class="tagsIngr"></div>
+                    <div class="tagsAppl"></div>
+                    <div class="tagsUst"></div>
+                </div>
+            </div>
+
+            <!--drop down-->
+            <div id="absolute">
+                <div class="search">
+                    <div id="drop">
+                        <div class="drop drop-ingredients">
+                            <div id="drop-ingredients_closed" class="drop-menu_closed">
+                                <input type="text" id="ingredients" class="drop-input_closed drop-input_ingredients" placeholder="Ingrédients" value="Ingrédients" autocomplete="off"/>
+                                <i class="fas fa-chevron-down" id="ingredients-down"></i>
+                            </div>
+                            <div id="drop-ing_open" class="drop-all_open drop-menu_open">
+                                <div class="search-drop_all search-ing_all">
+                                    <input class="search-drop" id="search-drop_ing" type="search" placeholder="Rechercher un ingrédient" autocomplete="off"/>
+                                    <i class="fas fa-chevron-up" id="ingredients-up"></i>
+                                </div>
+                                <div id="drop-ingredients_open" class="drop-menu_open">
+                                    liste tout
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+
+</html>
