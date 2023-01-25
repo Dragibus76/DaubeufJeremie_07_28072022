@@ -262,6 +262,53 @@
     pointer-events: none;
 }
 
+/* TAGS */
+
+.tags {
+    margin: 1rem 1rem 1rem 7%;
+    display: flex;
+}
+
+.tags i {
+    font-size: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+    line-height: 37px;
+}
+
+.tagsIngr,.tagsAppl,.tagsUst {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tagIngr,.tagAppl,.tagUst {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-family: "lato", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 107px;
+    height: 37px;
+    padding: 0.2rem 0.5rem;
+    vertical-align: middle;
+    line-height: 37px;
+    border-radius: 5px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tagIngr {
+    background-color: #3282f7;
+}
+
+.tagAppl {
+    background-color: #68d9a4;
+}
+
+.tagUst {
+    background-color: #ed6454;
+}
 
 
 
