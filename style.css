@@ -427,3 +427,94 @@ main img {
     width: 70px;
     text-align: right;
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 892px) {
+    .fa-search {
+        right: 2rem;
+    }
+    
+    .tags,.tagsIngr,.tagsAppl,.tagsUst {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .search-every {
+        width: 94%;
+        margin: 0;
+    }
+    
+    .container {
+        display: flex;
+        min-width: 1440px;
+        margin: 2rem;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    #drop {
+        margin: 0 7%;
+        flex-direction: column;
+        width: 85%;
+    }
+    
+    .drop {
+        margin-bottom: 2%;
+    }
+    
+    .drop-menu_closed,.drop-menu_open {
+        width: 100%;
+    }
+    
+    main {
+        margin: 15rem 0vw;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    article {
+        margin: auto;
+        margin-bottom: 2%;
+    }
+    
+    .fa-chevron-up {
+        font-size: 1rem;
+        color: white;
+        position: absolute;
+        top: 2%;
+        right: 2%;
+    }
+    
+    .drop-ingredients {
+        margin-right: 0rem;
+    }
+    
+    .drop-appareil {
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+    
+    .drop-ustensiles {
+        margin-left: 0rem;
+    }
+    
+    #error-img {
+        width: 100%;
+    }
+    
+    .search-every input::placeholder {
+        font-style: 0.5rem;
+    }
+    
+    #search-all::placeholder {
+        font-size: 0.7rem;
+        opacity: 0.4;
+    }
+}
+
+
+
