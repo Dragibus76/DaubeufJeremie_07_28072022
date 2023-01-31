@@ -217,7 +217,7 @@
   padding: 0.5rem 0.2rem;
   color: white;
   font-size: unset;
-  text-decoration: underline;
+  
 }
 
 .search-app_all,
@@ -228,7 +228,6 @@
   padding: 0.5rem 0.2rem;
   color: white;
   font-size: unset;
-  text-decoration: underline;
 }
 
 .search-ust_all,
@@ -239,7 +238,6 @@
   padding: 0.5rem 0.2rem;
   color: white;
   font-size: unset;
-  text-decoration: underline;
 }
 
 .search-ing_all input:focus,
@@ -249,13 +247,15 @@
   font-family: "lato", sans-serif;
   color: white;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .search-ing_all input::placeholder,
 .search-app_all input::placeholder,
 .search-ust_all input::placeholder {
   color: white;
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 #drop {
@@ -404,13 +404,13 @@ main img {
   border-radius: 0 0 5px 5px;
 }
 
-.article:hover,
+/* .article:hover,
 .article:focus {
   transform: scale(1.02);
   transition: 200ms;
   border: solid 5px rgba(208, 79, 79, 0.8);
   border-radius: 10px;
-}
+} */
 
 .title,
 .details {

@@ -1,5 +1,4 @@
-/** Instanciation
- */
+/** Instanciation **/
 
 let dropIngrBtn = document.getElementById("ingredients-down");//intégration sur la fléche pour qu'il y est propagation de l'action pour l'ouerture
 let dropAppBtn = document.getElementById("appareil-down");
@@ -13,8 +12,11 @@ let dropUstBtnClos = document.getElementById("ustensiles-up");
 let searchEvery = document.querySelector(".search-every");
 let main = document.querySelector(".recipes");
 
-/** Ouverture des drops down
- */
+//*************************************
+//DROPDOWNS
+//*************************************
+
+/** Ouverture des drops down **/
 dropIngrBtn.addEventListener("click", openDropIngr);
 dropAppBtn.addEventListener("click", openDropApp);
 dropUstBtn.addEventListener("click", openDropUst);

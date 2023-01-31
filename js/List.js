@@ -30,10 +30,15 @@ class List {
       }
       document.querySelector("main").innerHTML = html;
     }
-  
-    /**Filtre les listes des drop down   */
-  
-    //Ingredients
+    //*************************************
+    //DROPDOWNS
+    //*************************************
+
+    /** Filtre les listes des drop down  **/
+
+    //*************************************
+    //INGREDIENTS
+    //*************************************
   
     //Collecter l'ingrédient rechercher
     collectIngredients() {
@@ -43,7 +48,6 @@ class List {
         recipe.ingredients.forEach((ingr) => {
           // Met dans le nouveau tableau les donnée [ingredients] l'"ingredient" dans "ingr" (ingr= chaque {} dans ingrédients)
           this.ingredients.push(ingr.ingredient);
-          // console.log(ingr.ingredient)
         });
       });
     }
@@ -52,7 +56,6 @@ class List {
     displayIngredients(ingredients) {
       //[ingredients] est un nouveaux tableaux classé par ordre alphabétique venant de data.ingredients
       ingredients = sortSet(ingredients);
-      // console.log(ingredients)
   
       let html = "";
       //Dans le tableau [ingredients] pour chaque "ingr"
@@ -77,7 +80,6 @@ class List {
             // alors ajoute la recette
             count++;
           }
-          //console.log(ingredientsSelected.name);
         });
         // si le conteur = à la longeur du tableau ingredientsSelected
         if (count == this.ingredientsSelected.length) {
@@ -184,8 +186,16 @@ class List {
       });
     }
   
+
+
+
+
+
+
   
-    //APPLIANCE
+    //*************************************
+    //APPAREILS
+    //*************************************
   
     //Collecter les appareils rechercher
   
@@ -326,7 +336,14 @@ class List {
       document.querySelector(".tagsAppl").innerHTML = html;
     }
   
+
+
+
+
+
+    //*************************************
     //USTENSILS
+    //*************************************
   
     //Collecter les ustensils rechercher
     collectUstensils() {
@@ -615,7 +632,9 @@ class List {
       console.log("tags sellectionné et modifé", this.alltagsSelected);
     }
   
-    /*   BARRE DE RECHERCHE PRINCIPALE  */
+    //*************************************
+    //RECHERCHE PRINCIPALE
+    //*************************************
   
     listenForFilteringAll() {
       // récupère dans le DOM la barre de recherche 
@@ -692,7 +711,9 @@ class List {
       );
     }
   
-    /*   INPUT INGREDIENT DANS LE DROP DOWN  */
+    //*************************************
+    //RECHERCHE SECONDAIRE INGREDIENTS
+    //*************************************
   
     //Ecoute si il y a un Filtrer sur la recherche
     listenForFilteringInputIngr() {
@@ -734,7 +755,9 @@ class List {
       });
     }
   
-    /*   INPUT APPAREILS DANS LE DROP DOWN  */
+    //*************************************
+    //RECHERCHE SECONDAIRE APPAREIL
+    //*************************************
   
     //Ecoute si il y a un Filtrer sur la recherche
     listenForFilteringInputApp() {
@@ -779,7 +802,9 @@ class List {
     }
   
   
-    /*   INPUT USTENSILS DANS LE DROP DOWN  */
+    //*************************************
+    //RECHERCHE SECONDAIRE USTENSILS
+    //*************************************
   
     //Ecoute si il y a un Filtrer sur la recherche
     listenForFilteringInputUst() {
