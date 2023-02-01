@@ -18,7 +18,10 @@ class Recipe {
       this.collectTerms();
     }
   
-    //pour filtrer sur  les tags
+    //*************************************
+    //FILTRER LES TAGS
+    //*************************************
+
     //récuperer (ingrédient demander)
     hasIngredient(ingredient) {
       //Mise à zero 
@@ -59,7 +62,10 @@ class Recipe {
       return exists;
     }
   
-  // Affiche recette
+    //*************************************
+    //AFFICHER LA RECETTE
+    //*************************************
+
   render() {
     let ingredientHtml = "";
   
@@ -98,31 +104,25 @@ class Recipe {
       let recipe = this;
       // Mise en tableau le nom des recettes
       let nameToConcatArray = [normalise(recipe.name)];
-      // console.log(nameToConcatArray)
   
       // Mise en tableau des ingrédient 
       let ingredientsToConcatArray = getIngredientsToConcat(recipe);
-      //  console.log(ingredientsToConcatArray)
+      
   
       // Mise en tableau le nom des appareilles
       let applianceToConcat = [normalise(recipe.appliance)];
   
       // Mise en tableau le nom des ustensiles
       let ustensilsToConcatArray = getUstensilsToConcat(recipe);
-      // console.log(ustensilsToConcatArray)
-  
+      
       // Récupération des résumés des recettes
       let descriptionToConcat = recipe.description;
-      // console.log(descriptionToConcat)
-  
   
       // Normalisation de l'écriture des résumés des recettes
       let descriptionNorm = normalise(descriptionToConcat);
-      // console.log(descriptionNorm)
   
       // Mise en tableau des resumés en sous-chaînes afin de faire des recherches par la suite
       let descriptionToConcatArray = descriptionNorm.split(" ");
-      // console.log(descriptionToConcatArray)
   
       // Mise en tableau le nom des recettes + filtre les mots qui prenne de l'espace dans la recherche Algo
       let descriptionToBeConcatArray = descriptionToConcatArray.filter(
