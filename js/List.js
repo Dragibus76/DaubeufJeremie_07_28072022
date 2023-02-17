@@ -8,7 +8,7 @@ class List {
     this.ustensils = [];
     this.ustensilsSelected = [];
     this.alltagsSelected = [];
-    this.search = " ";
+    this.needle = " ";
   }
 
   // Récupére les recettes
@@ -618,7 +618,6 @@ class List {
       // récupère dans le DOM le tags selectionné et ajoute a sa class "select"
       document.getElementById(tagId).classList.add("select");
     }
-    console.log("tags sellectionné et modifé", this.alltagsSelected);
   }
 
   //*************************************
@@ -632,22 +631,18 @@ class List {
     // La recherche principale ayant une entrée aura pour évenement
     mainInput.addEventListener("input", (e) => {
       // nouvelle demande = différent du tableau
-      let hasNewCharacters = this.search.length <= e.target.value.length;
+      
       // cette recherche = normalise l'écritrue de la recherche
-      this.search = normalise(e.target.value);
+      this.needle = normalise(e.target.value);
       // item = tous le tableau de recettes
       let items = this.all;
 
-      // si (demande de recherche)
-      if (hasNewCharacters) {
-        // tous le tableau = filtrer
-        items = this.filtered;
-      }
+      
 
       // si (cette recherche possède 2 caractére ou plus)
-      if (this.search.length > 2) {
+      if (this.needle.length > 2) {
         // function chronomètre de l'algo de recherche
-        this.chrono(items);
+        this.filtered = this.search2(items, this.needle);//CHOIX ALGO 1 OU 2
         // Affiche les recettes dans le main
         this.displayRecipes();
 
@@ -682,23 +677,23 @@ class List {
       }
     });
   }
-  chrono(items) {
-    // Temps Actuel de déclanchement
-    let temps0 = performance.now();
-    // ce filtre = [items] (tableau de toutes les recettes) filtre (les recette)
-    const needle = this.search.toLowerCase();
-    this.filtered = this.search(items, needle)
+  // chrono(items) {
+  //   // Temps Actuel de déclanchement
+  //   let temps0 = performance.now();
+  //   // ce filtre = [items] (tableau de toutes les recettes) filtre (les recette)
+  //   this.filtered = this.search2(items, this.needle)//choix fonctions
 
-    // Temps Actuel de la finalisation
-    let temps1 = performance.now();
-    // Affiche le temps écoulé
-    console.log(
-      "l'algo 1 à mis\"" + this.search + '":' + (temps1 - temps0) + "ms"
-    );
-  }
+  //   // Temps Actuel de la finalisation
+  //   let temps1 = performance.now();
+  //   // Affiche le temps écoulé
+  //   console.log(
+  //     "l'algo 1 à mis\"" + this.needle + '":' + (temps1 - temps0) + "ms"
+  //   );
+  // }
 
   search(items, needle) {
-    return items.filter((recipe) => {
+    
+    const list = items.filter((recipe) => {
       const ings = recipe.ingredients.map(a => a.ingredient.toLowerCase());//['poivre','sel']
 
       if (ings.includes(needle)){
@@ -710,27 +705,30 @@ class List {
         return true;
       }
 
-      if (recipe.descr.toLowerCase().indexOf(needle) > -1)
+      if (recipe.description.toLowerCase().indexOf(needle) > -1)
       {
         return true;
       }
       return false;
     });
+    
+    return list;
   }
 
   search2(items, needle) {
+    
     const list = [];
     
 
     for (let i = 0; i < items.length; i++)
     {
       const recipe = items[i];
-      for (let j = 0; j < recipe.ingredients.length; j++)
+      if (recipe.name.toLowerCase().indexOf(needle) > -1)
+      
       {
-        const ing = recipe.ingredients[j].ingredient;
-        if (ing.indexOf(needle) > -1)
         {
           list.push(recipe)
+          continue;
         }
       }
 
@@ -738,14 +736,24 @@ class List {
       if (recipe.name.toLowerCase().indexOf(needle) > -1)
       {
         list.push(recipe)
+        continue;
       }
 
-      if (recipe.descr.toLowerCase().indexOf(needle) > -1)
+      for (let j =0;j< recipe.ingredients.length; j++)
       {
-        list.push(recipe)
+        const ing = recipe.ingredients[j].ingredient;
+        if (ing.indexOf(needle) > -1)
+        {
+          list.push(recipe)
+          continue;
+        }
+        
       }
-      return false;
+
+      
+      
     }
+    
     return list
     }
     
