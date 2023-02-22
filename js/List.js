@@ -565,7 +565,7 @@ class List {
         this.filterByAppl();
 
         // Chrono metre le temps de recherche
-        this.chrono(this.filtered);
+        this.search(this.filtered);
 
         // Vérification des appareils restant via le tableau des recettes actualisé
         this.appliancesAvailable = this.listAvailableAppliances();
@@ -669,6 +669,8 @@ class List {
         // Ce filtre filter par Appareils
         this.filterByAppl();
 
+        this.search(this.filtered, this.needle)
+
         // Crée le lien HTML et Js pour mettre display none "filtered-empty" et ne pas afficher le message info
         document.getElementById("filtered-empty").style.display = "none";
 
@@ -749,8 +751,6 @@ class List {
         }
         
       }
-
-      
       
     }
     
@@ -774,7 +774,7 @@ class List {
     // Ecoute la "recherche" et lance l'"event"
     ingredientsInput.addEventListener("input", (e) => {
       // normalise la recherche
-      this.search = normalise(e.target.value);
+      this.needleIng = normalise(e.target.value);
       // renvoie la recherche
       console.log("il a été taper", this.search);
       // Filtre par  la recherche ingrédient
@@ -795,7 +795,7 @@ class List {
       // name= normalise la recherche"data-name"
       let name = normaliseForSearch(ingre.getAttribute("data-name"));
       //  si le "name" n'est pas includes à la recherche
-      if (!name.includes(this.search)) {
+      if (!name.includes(this.needleIng)) {
         // ne les affiche pas
         ingre.style.display = "none";
       }
@@ -818,10 +818,10 @@ class List {
     // Ecoute la "recherche" et lance l'"event"
     appareilInput.addEventListener("input", (e) => {
       // normalise la recherche
-      this.search = normalise(e.target.value);
+      this.needleAppareil = normalise(e.target.value);
 
       // renvoie la recherche
-      console.log("il a été taper", this.search);
+      console.log("il a été taper", this.needleAppareil);
       // Filtre par la recherche appareils
       this.filterByInputApp();
     });
@@ -841,7 +841,7 @@ class List {
       // name= normalise la recherche"data-name"
       let name = normaliseForSearch(appa.getAttribute("data-name"));
       //  si le "name" n'est pas includes à la recherche
-      if (!name.includes(this.search)) {
+      if (!name.includes(this.needleAppareil)) {
         // ne les affiches pas
         appa.style.display = "none";
       }
@@ -864,9 +864,9 @@ class List {
     // Ecoute la "recherche" et lance l'"event"
     ustensilsInput.addEventListener("input", (e) => {
       // normalise la recherche
-      this.search = normalise(e.target.value);
+      this.needleUstensil = normalise(e.target.value);
       // renvoie la recherche
-      console.log("il a été taper", this.search);
+      console.log("il a été taper", this.needleUstensil);
       // Filtre par  la recherche ustensil
       this.filterByInputUst();
     });
@@ -885,7 +885,7 @@ class List {
       // name= normalise la recherche"data-name"
       let name = normaliseForSearch(uste.getAttribute("data-name"));
       //  si le "name" n'est pas includes à la recherche
-      if (!name.includes(this.search)) {
+      if (!name.includes(this.needleUstensil)) {
         // ne les affiches pas
         uste.style.display = "none";
       }
