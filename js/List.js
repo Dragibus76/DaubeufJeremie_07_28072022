@@ -642,16 +642,17 @@ class List {
       // si (cette recherche possède 2 caractére ou plus)
       if (this.needle.length > 2) {
         // function chronomètre de l'algo de recherche
-        this.filtered = this.search2(items, this.needle);//CHOIX ALGO 1 OU 2
+        this.filtered = this.search(items, this.needle);//CHOIX ALGO 1 OU 2
         // Affiche les recettes dans le main
         this.displayRecipes();
 
         /* Si aucune recette présenter un message info */
 
         //si  (la longeur du filtre et = 0)
-        if (this.filtered.length == 0) {
+        if (this.filtered.length  < 2) {
           // Crée le lien HTML et Js pour mettre display flex "filtered-empty" et afficher le message info
-          document.getElementById("filtered-empty").style.display = "flex";
+          // document.getElementById("filtered-empty").style.display = "flex";
+          
         } else {
           // Rend indisponible le tag
           this.disableAllSelectedTag();
@@ -679,19 +680,6 @@ class List {
       }
     });
   }
-  // chrono(items) {
-  //   // Temps Actuel de déclanchement
-  //   let temps0 = performance.now();
-  //   // ce filtre = [items] (tableau de toutes les recettes) filtre (les recette)
-  //   this.filtered = this.search2(items, this.needle)//choix fonctions
-
-  //   // Temps Actuel de la finalisation
-  //   let temps1 = performance.now();
-  //   // Affiche le temps écoulé
-  //   console.log(
-  //     "l'algo 1 à mis\"" + this.needle + '":' + (temps1 - temps0) + "ms"
-  //   );
-  // }
 
   search(items, needle) {
     
@@ -701,12 +689,10 @@ class List {
       if (ings.includes(needle)){
         return true;
       }
-
       if (recipe.name.toLowerCase().indexOf(needle) > -1)
       {
         return true;
       }
-
       if (recipe.description.toLowerCase().indexOf(needle) > -1)
       {
         return true;
@@ -720,27 +706,21 @@ class List {
   search2(items, needle) {
     
     const list = [];
-    
-
     for (let i = 0; i < items.length; i++)
     {
       const recipe = items[i];
       if (recipe.name.toLowerCase().indexOf(needle) > -1)
-      
       {
         {
           list.push(recipe)
           continue;
         }
       }
-
-
       if (recipe.name.toLowerCase().indexOf(needle) > -1)
       {
         list.push(recipe)
         continue;
       }
-
       for (let j =0;j< recipe.ingredients.length; j++)
       {
         const ing = recipe.ingredients[j].ingredient;
@@ -749,9 +729,7 @@ class List {
           list.push(recipe)
           continue;
         }
-        
       }
-      
     }
     
     return list
