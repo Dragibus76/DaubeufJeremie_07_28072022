@@ -703,37 +703,37 @@ class List {
     return list;
   }
 
-  search2(items, needle) {
+  // search2(items, needle) {
     
-    const list = [];
-    for (let i = 0; i < items.length; i++)
-    {
-      const recipe = items[i];
-      if (recipe.name.toLowerCase().indexOf(needle) > -1)
-      {
-        {
-          list.push(recipe)
-          continue;
-        }
-      }
-      if (recipe.name.toLowerCase().indexOf(needle) > -1)
-      {
-        list.push(recipe)
-        continue;
-      }
-      for (let j =0;j< recipe.ingredients.length; j++)
-      {
-        const ing = recipe.ingredients[j].ingredient;
-        if (ing.indexOf(needle) > -1)
-        {
-          list.push(recipe)
-          continue;
-        }
-      }
-    }
+  //   const list = [];
+  //   for (let i = 0; i < items.length; i++)
+  //   {
+  //     const recipe = items[i];
+  //     if (recipe.name.toLowerCase().indexOf(needle) > -1)
+  //     {
+  //       {
+  //         list.push(recipe)
+  //         continue;
+  //       }
+  //     }
+  //     if (recipe.name.toLowerCase().indexOf(needle) > -1)
+  //     {
+  //       list.push(recipe)
+  //       continue;
+  //     }
+  //     for (let j =0;j< recipe.ingredients.length; j++)
+  //     {
+  //       const ing = recipe.ingredients[j].ingredient;
+  //       if (ing.indexOf(needle) > -1)
+  //       {
+  //         list.push(recipe)
+  //         continue;
+  //       }
+  //     }
+  //   }
     
-    return list
-    }
+  //   return list
+  //   }
     
 
   //*************************************
